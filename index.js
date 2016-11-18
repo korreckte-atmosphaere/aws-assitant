@@ -64,6 +64,8 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "GetStatus": function (intent, session, response) {
+        console.log({intent, session, response});
+        console.log(intent.slots['Service'].value);
         response.tellWithCard("Hello World!", "Hello World", "Hello World!");
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
