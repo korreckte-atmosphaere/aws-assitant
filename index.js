@@ -65,13 +65,15 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "GetStatus": function (intent, session, response) {
-        console.log(intent.slots['Service'].value);
-
         var service = intent.slots['Service'].value;
-        console.log(awsCaller);
-        var reply = awsCaller.CheckServiceStatus(service);
 
-        response.tell(reply);
+        awsCaller.CheckServiceStatus(service, {}, function(data) {
+          console.log("finished in callback");
+
+          reply = data.Reservations[0].Instances[0].InstanceId;
+
+          response.tell(reply);
+        })
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");

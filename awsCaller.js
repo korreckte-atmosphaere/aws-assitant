@@ -6,24 +6,14 @@ var ec2 = new AWS.EC2({apiVersion: '2016-09-15'});
 AWS.config.update({region:'us-west-2'});
 
 var AwsCaller = {
-  CheckServiceStatus: function (service) {
-    if (service === "ec2") {
-      var params = {
-        IncludeAllInstances: true
-      };
+  CheckServiceStatus: function (service, response, callback) {
+     if (service === "elastic beanstalk") {
+       var request = ec2.describeInstances({}, function(err, data) {
+         if(err) console.log(err, err.stack); // an error has happened on AWS
+         console.log("finished before callback");
 
-      ec2.waitFor('instanceStatusOk', params, function(err, data) {
-        if (err) {
-          console.log(err, err.stack);
-        } else {
-          return data.InstanceStatuses.map(function(instance) {
-            return {
-              id: instance.InstanceId,
-              state: instance.InstanceState.Name
-            };
-          });
-        }
-      });
+         callback(data);
+       })
     }
   }
 };
