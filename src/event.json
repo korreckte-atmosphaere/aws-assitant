@@ -1,0 +1,33 @@
+{
+  "session": {
+    "sessionId": "SessionId.f14c15c5-d7b1-4a04-9135-26ddf2d1eeb1",
+    "application": {
+      "applicationId": "amzn1.ask.skill.33c50193-d660-48e3-a861-c59e85ef31ea"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AHYBKAOX4P3UMYF25ITOHT3HL5XY74ILHF4ZQMWQLJB4PMOHPYE62BU2TD7W2Q2JXAVR5EW6BYGNTXXYSWZY5RVQ2LXYM3P226INLFJJLS6APGSLYH7CHJDTNSL43YDJYM744UELHBZB6CTG2YFRELZOYNOEFECD27C4PEZAOC43OQQQYZQBPOQVAHPY2GCALFN5TNTTWAOZS3I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.963d26ef-8c43-4111-a460-375f7b18d23f",
+    "locale": "en-US",
+    "timestamp": "2016-11-18T20:00:24Z",
+    "intent": {
+      "name": "GetStatus",
+      "slots": {
+        "Service": {
+          "name": "Service",
+          "value": "elastic beanstalk"
+        },
+        "Date": {
+          "name": "Date",
+          "value": "2016-11-18"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
