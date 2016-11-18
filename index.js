@@ -27,6 +27,7 @@ var APP_ID = undefined; //replace with "amzn1.echo-sdk-ams.app.[your-unique-valu
  * The AlexaSkill prototype and helper functions
  */
 var AlexaSkill = require('./AlexaSkill');
+var awsCaller = require('./awsCaller');
 
 /**
  * HelloWorld is a child of AlexaSkill.
@@ -64,9 +65,13 @@ HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedReques
 HelloWorld.prototype.intentHandlers = {
     // register custom intent handlers
     "GetStatus": function (intent, session, response) {
-        console.log({intent, session, response});
         console.log(intent.slots['Service'].value);
-        response.tellWithCard("Hello World!", "Hello World", "Hello World!");
+
+        var service = intent.slots['Service'].value;
+        console.log(awsCaller);
+        var reply = awsCaller.CheckServiceStatus(service);
+
+        response.tell(reply);
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");
