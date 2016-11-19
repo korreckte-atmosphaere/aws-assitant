@@ -67,7 +67,7 @@ HelloWorld.prototype.intentHandlers = {
     "GetStatus": function (intent, session, response) {
         var service = intent.slots['Service'].value;
 
-        awsCaller.CheckServiceStatus(service, {}, function(data) {
+        awsCaller.CheckServiceStatus(service, function(data) {
           console.log("finished in callback");
 
           reply = data.Reservations[0].Instances[0].InstanceId;
