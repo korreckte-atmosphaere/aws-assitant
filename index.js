@@ -84,10 +84,7 @@ HelloWorld.prototype.intentHandlers = {
       });
     },
     "GetBilling": function (intent, session, response) {
-      awsCaller.CheckBillingStatus(function(data) {
-        console.log(data);
-        response.tell("You're AWS receipt for November is 20.46$");
-      });
+      response.tell("You're AWS receipt for November is 20.46$");
     },
     "CreateInstance": function (intent, session, response) {
       handleInstanceCreating(intent, session, response);
