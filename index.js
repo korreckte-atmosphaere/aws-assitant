@@ -89,7 +89,7 @@ HelloWorld.prototype.intentHandlers = {
       });
     },
     "CreateInstance": function (intent, session, response) {
-      handleInstanceCreating(session, response);
+      handleInstanceCreating(intent, session, response);
     },
     "AMAZON.StopIntent": function (intent, session, response) {
       var speechOutput = "Goodbye";
@@ -100,7 +100,7 @@ HelloWorld.prototype.intentHandlers = {
     }
 };
 
-function handleInstanceCreating(session, response) {
+function handleInstanceCreating(intent, session, response) {
   var speechText = "";
   var plan = intent.slot['Plan'].value;
   var name = intent.slot['Name'].value;
