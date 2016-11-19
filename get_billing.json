@@ -1,0 +1,28 @@
+{
+  "session": {
+    "sessionId": "SessionId.eea95b3e-6922-475e-8a58-5a4004c4e46f",
+    "application": {
+      "applicationId": "amzn1.ask.skill.33c50193-d660-48e3-a861-c59e85ef31ea"
+    },
+    "attributes": {},
+    "user": {
+      "userId": "amzn1.ask.account.AHYBKAOX4P3UMYF25ITOHT3HL5XY74ILHF4ZQMWQLJB4PMOHPYE62BU2TD7W2Q2JXAVR5EW6BYGNTXXYSWZY5RVQ2LXYM3P226INLFJJLS6APGSLYH7CHJDTNSL43YDJYM744UELHBZB6CTG2YFRELZOYNOEFECD27C4PEZAOC43OQQQYZQBPOQVAHPY2GCALFN5TNTTWAOZS3I"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.8357c24f-7a42-4cb7-9714-fa435d44c97b",
+    "locale": "en-US",
+    "timestamp": "2016-11-19T05:40:19Z",
+    "intent": {
+      "name": "GetBilling",
+      "slots": {
+        "Date": {
+          "name": "Date"
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}
