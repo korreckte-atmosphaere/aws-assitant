@@ -17,7 +17,7 @@ var AwsCaller = {
     }
   },
   CheckBillingStatus: function (callback) {
-    billing( function (err, cost) {
+    billing(function (err, cost) {
       if (err) console.log(err, err.stack);
 
       callback(cost);

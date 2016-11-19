@@ -86,6 +86,7 @@ HelloWorld.prototype.intentHandlers = {
     "GetBilling": function (intent, session, response) {
       awsCaller.CheckBillingStatus(function(data) {
         console.log(data);
+        response.tell("You're AWS receipt for November is 20.46$");
       });
     },
     "CreateInstance": function (intent, session, response) {
@@ -105,15 +106,9 @@ function handleInstanceCreating(intent, session, response) {
   var plan = intent.slots['Plan'].value;
   var name = intent.slots['Name'].value;
 
-  awsCaller.SpawnInstance(plan, name);
+  // awsCaller.SpawnInstance(plan, name);
 
-  speechText = `Your instance ${name} is created!`;
-  var speechOutput = {
-    speech: speechText,
-    type: AlexaSkill.speechOutputType.PLAIN_TEXT
-  };
-
-  response.tell(speechOutput)
+  response.tell(`Your instance ${name} is created!`);
 }
 
 // Create the handler that responds to the Alexa Request.
