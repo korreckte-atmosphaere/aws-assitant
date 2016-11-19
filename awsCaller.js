@@ -7,7 +7,7 @@ AWS.config.update({region:'us-west-2'});
 
 var AwsCaller = {
   CheckServiceStatus: function (service, callback) {
-     if (service === "elastic beanstalk") {
+     if (service === "ec2") {
        var request = ec2.describeInstances({}, function(err, data) {
          if(err) console.log(err, err.stack); // an error has happened on AWS
          console.log("finished before callback");

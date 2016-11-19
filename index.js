@@ -72,6 +72,9 @@ HelloWorld.prototype.intentHandlers = {
 
           reply = data.Reservations[0].Instances[0].InstanceId;
 
+          if (reply) response.tell(reply);
+          else response.tell("You're EC2 instance is not healthy. Please do something about it.");
+
           response.tell(reply);
         })
     },
