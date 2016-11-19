@@ -102,8 +102,8 @@ HelloWorld.prototype.intentHandlers = {
 
 function handleInstanceCreating(intent, session, response) {
   var speechText = "";
-  var plan = intent.slot['Plan'].value;
-  var name = intent.slot['Name'].value;
+  var plan = intent.slots['Plan'].value;
+  var name = intent.slots['Name'].value;
 
   awsCaller.SpawnInstance(plan, name);
 
