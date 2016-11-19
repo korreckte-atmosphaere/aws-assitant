@@ -51,8 +51,8 @@ HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRe
 
 HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
     console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    var speechOutput = "Welcome to the Alexa Skills Kit, you can say hello";
-    var repromptText = "You can say hello";
+    var speechOutput = "Welcome to the Alexa AWS Assistant, what do you need?";
+    var repromptText = "You can status check your services";
     response.ask(speechOutput, repromptText);
 };
 
@@ -88,10 +88,33 @@ HelloWorld.prototype.intentHandlers = {
         console.log(data);
       });
     },
+    "CreateInstance": function (intent, session, response) {
+      handleInstanceCreating(session, response);
+    },
+    "AMAZON.StopIntent": function (intent, session, response) {
+      var speechOutput = "Goodbye";
+      response.tell(speechOutput);
+    },
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("You can say hello to me!", "You can say hello to me!");
+        response.ask("You can ask me anything about your aws account.", "You can ask me to help you with your amazon services.");
     }
 };
+
+function handleInstanceCreating(session, response) {
+  var speechText = "";
+  var plan = intent.slot['Plan'].value;
+  var name = intent.slot['Name'].value;
+
+  awsCaller.SpawnInstance(plan, name);
+
+  speechText = `Your instance ${name} is created!`;
+  var speechOutput = {
+    speech: speechText,
+    type: AlexaSkill.speechOutputType.PLAIN_TEXT
+  };
+
+  response.tell(speechOutput)
+}
 
 // Create the handler that responds to the Alexa Request.
 exports.handler = function (event, context) {

@@ -22,6 +22,30 @@ var AwsCaller = {
 
       callback(cost);
     });
+  },
+  SpawnInstance: function(plan, name) {
+    var params = {
+      ImageId: 'ami-1624987f', // Amazon Linux AMI x86_64 EBS
+      InstanceType: `t1.${plan}`,
+      MinCount: 1,
+      MaxCount: 1
+    };
+    ec2.runInstances(params, function(){
+      if (err){
+        console.log("Could not create instance!",err);
+        return;
+      }
+      var instanceId = data.Instances[0].InstanceId;
+      console.log("Created instance", instanceId);
+         console.log("Created instance", instanceId);
+         // Add tags to the instance
+         params = {Resources: [instanceId], Tags: [
+         {
+          Key: 'Name',
+          Value: `${name}`
+         }
+         ]};
+    });
   }
 };
 
