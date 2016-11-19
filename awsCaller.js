@@ -4,7 +4,7 @@ var billing = require('aws-billing');
 var AWS = require('aws-sdk');
 var ec2 = new AWS.EC2({apiVersion: '2016-09-15'});
 
-AWS.config.update({region:'us-west-2'});
+AWS.config.update({region:'us-east-1'});
 
 var AwsCaller = {
   CheckServiceStatus: function (service, callback) {
