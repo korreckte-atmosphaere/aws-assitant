@@ -20,7 +20,7 @@
       "slots": {
         "Service": {
           "name": "Service",
-          "value": "elastic beanstalk"
+          "value": "ec2"
         },
         "Date": {
           "name": "Date",

@@ -67,13 +67,21 @@ HelloWorld.prototype.intentHandlers = {
     "GetStatus": function (intent, session, response) {
         var service = intent.slots['Service'].value;
 
-        awsCaller.CheckServiceStatus(service, {}, function(data) {
+        awsCaller.CheckServiceStatus(service, function(data) {
           console.log("finished in callback");
+          console.log("DATA", data);
 
-          reply = data.Reservations[0].Instances[0].InstanceId;
+          if (data &&
+              data.Reservations[0] &&
+              data.Reservations[0].Instances &&
+              data.Reservations[0].Instances[0]) {
+            reply = data.Reservations[0].Instances[0].InstanceId;
 
-          response.tell(reply);
-        })
+            response.tell(reply);
+          } else {
+            response.tell("You're EC2 instance is not healthy. Please do something about it.");
+          }
+      });
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.ask("You can say hello to me!", "You can say hello to me!");
